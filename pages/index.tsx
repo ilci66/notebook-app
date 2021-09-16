@@ -4,7 +4,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+// for node, created .env.local file
 console.log(process.env.MONGO_URI)
+// this is for non noe environments
+// console.log(process.env.secretstring)
+
+const testingApi = () => {
+  // reading about data-fetchin in next.js gonna take a while
+}
+testingApi();
+
+
 
 const Home: NextPage = () => {
   return (
@@ -20,7 +30,7 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
         <Link href="/books"><a  className={styles.card}>Books</a></Link>
         <Link href="/web-development"><a  className={styles.card}>Web Development</a></Link>
-        <Link href="drawing-architecture"><a  className={styles.card}>Drawing & Architecture</a></Link>
+        <Link href="/drawing-architecture"><a  className={styles.card}>Drawing & Architecture</a></Link>
         </div>
       </main>
       <footer className={styles.footer}>
