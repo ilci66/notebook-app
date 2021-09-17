@@ -1,13 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
+type Books = {
   books: object[]
 }
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Books>
 ) {
     res.status(200).json({ books: [
       { author:"author1" ,name: 'book1', description: 'desc1', notes: 'notes1', rate: 1 }, 
