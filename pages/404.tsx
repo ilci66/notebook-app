@@ -7,6 +7,7 @@ import { NextPage } from 'next';
 import styles from '../styles/Home.module.css'
 
 const NotFound: NextPage = () => {
+    // router is type NextRouter
     const router = useRouter()
     useEffect(() => {
         setTimeout(() => {
