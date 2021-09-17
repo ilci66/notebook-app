@@ -5,7 +5,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 // for node, created .env.local file
-console.log(process.env.MONGO_URI)
+// console.log(process.env.MONGO_URI)
 // this is for non noe environments
 // console.log(process.env.secretstring)
 
