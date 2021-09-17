@@ -1,11 +1,13 @@
 import { NextPage } from "next";
-
+import BookClass from '../classes/book'
 
 // working on this to get rid of book.name doesn't exist error
 interface AllBook {
+    author: string,
     name: string,
     description: string,
-    notes: string
+    notes: string,
+    rate: number
 }
 interface AllBooks extends Array<AllBook>{}
 
