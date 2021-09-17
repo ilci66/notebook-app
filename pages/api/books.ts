@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
 type Data = {
   books: object[]
 }
@@ -16,3 +15,4 @@ export default function handler(
       { name: 'book3', description: 'desc3', notes: 'notes3' }
     ] 
 })}
+ 

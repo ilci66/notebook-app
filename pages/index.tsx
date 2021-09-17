@@ -9,10 +9,7 @@ console.log(process.env.MONGO_URI)
 // this is for non noe environments
 // console.log(process.env.secretstring)
 
-const testingApi = () => {
-  // reading about data-fetchin in next.js gonna take a while
-}
-testingApi();
+
 
 
 
