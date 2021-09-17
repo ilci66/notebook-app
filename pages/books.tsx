@@ -8,9 +8,14 @@ export const getStaticProps = async () => {
         props: { books: data.books }
     }
 }
-let book:object;
 
-const Books: NextPage = ({ books }) => {
+// wrote this to get rid of the the type any error in props
+interface Props {
+    books: object[]
+}
+
+const Books: NextPage<Props> = (props) => {
+    const { books } = props;
     console.log(books)
     return(
         <div> 
