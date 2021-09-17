@@ -22,24 +22,26 @@ export const getStaticProps = async () => {
 
 
 // wrote this to get rid of the the type any error in props
-interface Props {
+interface BookProps {
     books:[
         {
+            author: string,
             name: string,
             description: string,
-            notes: string
+            notes: string,
+            rate: number
         }  
     ]
 }
 
 // const Books: NextPage<Props> = (props) => {
-const Books: NextPage<Props> = (props) => {
+const Books: NextPage<BookProps> = (props) => {
     // props.books: object[]
     const { books } = props
     console.log(books)
     return(
         <div> 
-            <h1>The books I read</h1>
+            <h1>The books I've read</h1>
             <ul>
             {books.map(book => (
                 <li key={book.name}>{book.name}</li>
