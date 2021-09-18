@@ -4,7 +4,7 @@ const uri: string = process.env.MONGO_URI!
 console.log(uri)
 
 // trying to chache the database connection but keep getting some kind of type issue 
-let cached = global.mongoose
+let cached = global["mongoose"]
 
 const opts: object = {
     useNewUrlParser: true,
