@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const uri: string = process.env.MONGO_URI!
 console.log(uri)
 
-// let cached = global.mongoose
+// trying to chache the database connection but keep getting some kind of type issue 
+let cached = global.mongoose
 
 const opts: object = {
     useNewUrlParser: true,
