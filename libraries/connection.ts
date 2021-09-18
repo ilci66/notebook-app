@@ -9,11 +9,14 @@ const opts: object = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     bufferCommands: false,
-    bufferMaxEntries: 0,
-    useFindAndModify: true,
-    useCreateIndex: true
+    // these options apparently not supported
+    // bufferMaxEntries: 0,
+    // useFindAndModify: true,
+    // useCreateIndex: true
 }
-
-export default mongoose.connect(uri, opts).then(mongoose => {
-return console.log('Database connection established')
-})
+const connecter = () => {
+    mongoose.connect(uri, opts).then(mongoose => {
+        return console.log('Database connection established')
+    })
+}
+export default connecter
