@@ -13,9 +13,9 @@ const WebDevSchema = new Schema<WebDev>({
     notes: { type: String, required: true } ,
     source: { type: String, required: true}
 }, {
-    timestamps: true
+        timestamps: true
     } 
-)
+);
 const WebDevModel = model<WebDev>('WebDevModel', WebDevSchema)
 
 module.exports = WebDevModel;

@@ -16,9 +16,9 @@ const BookSchema = new Schema<Book>({
     notes: { type: String, required: true } ,
     rate: { type: Number, required: true }
 }, {
-     timestamps: true
+        timestamps: true
     } 
-)
+);
 const BookModel = model<Book>('BookModel', BookSchema)
 
 module.exports = BookModel;
