@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
         <Link href="/books"><a  className={styles.card}>Books</a></Link>
         <Link href="/web-development"><a  className={styles.card}>Web Development</a></Link>
-        <Link href="/drawing-architecture"><a  className={styles.card}>Drawing & Architecture</a></Link>
+        <Link href="/marketing"><a  className={styles.card}>Marketing</a></Link>
         </div>
       </main>
       <footer className={styles.footer}>
