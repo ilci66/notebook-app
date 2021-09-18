@@ -13,12 +13,6 @@ interface MarketingInt {
 interface MarketingInts extends Array<MarketingInt>{}
 
 export const getStaticProps = async () => {
-  // const res = await fetch('http://localhost:3000/api/books');
-  // const data = await res.json();
-  // const books: AllBooks = data.books
-  // return {
-  //     props: { books: books }
-  // }
   const res = await fetch('http://localhost:3000/api/marketing');
   console.log(res)
   const data = await res.json();
@@ -28,13 +22,28 @@ export const getStaticProps = async () => {
   }
 }
 
-
-const Marketing: NextPage = ( props ) => {
+interface MarketingProps {
+  marketingnotes:[
+      {
+          title: string,
+          field: string,
+          isRecent: boolean,
+          description: string,
+          notes: string,
+          source: string
+      }  
+  ]
+}
+const Marketing: NextPage<MarketingProps> = ( props ) => {
   console.log(props)
+  const { marketingnotes }: MarketingProps = props;
+  console.log(marketingnotes)
   return (
     <div className={styles.container}>
         <h1 className={styles.title}>Drawing Notes</h1>
-        {}
+        {marketingnotes.map(note => {
+          return(<div key={note.title} className={styles.card}>{note.title}</div>)
+        })}
     </div>
   )
 }
