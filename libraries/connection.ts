@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 const uri: string = process.env.MONGO_URI!
 console.log(uri)
 
+// let cached = global.mongoose
+
 const opts: object = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
