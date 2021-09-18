@@ -5,10 +5,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 type MarketingNotes = {
     marketingnotes: object[]
 }
+type Unsuccessful = {
+  success: boolean
+}
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<MarketingNotes>
+  res: NextApiResponse<MarketingNotes | Unsuccessful>
 ) {
     type marketingnotes = { 
       title: string,  
