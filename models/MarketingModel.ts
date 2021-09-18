@@ -7,7 +7,7 @@ interface Marketing {
     isRecent: boolean,
     notes: string, 
     source: string
-
+}
 
 const MarketingSchema = new Schema<Marketing>({
     title: { type: String, required: true } ,
