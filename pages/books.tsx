@@ -1,5 +1,8 @@
 import { NextPage } from "next";
-import BookClass from '../classes/book'
+import BookClass from '../classes/book';
+import styles from '../styles/Home.module.css';
+import { useState } from 'react';
+
 
 // working on this to get rid of book.name doesn't exist error
 interface AllBook {
@@ -38,15 +41,83 @@ interface BookProps {
 const Books: NextPage<BookProps> = (props) => {
     // props.books: object[]
     const { books } = props
-    console.log(books)
+    // console.log(books)
+
+    // instead of going with undefined use strings to let typescript know what to expect
+    // or tell what type to expect when defining these
+    const [ author, setAuthor ] = useState("");
+    const [ name, setName ] = useState("");
+    const [ description, setDescription ] = useState("");
+    const [ notes, setNotes ] = useState("");
+    const [ rate, setRate ] = useState("");
+
+    let newBook = new BookClass( author, name, description, notes, rate )
+
+
+
+    const createBook = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        console.log('create a book', name, author, description, notes, rate )
+    }
+    
     return(
-        <div> 
-            <h1>The books I've read</h1>
-            <ul>
-            {books.map(book => (
-                <li key={book.name}>{book.name}</li>
-            ))}
-            </ul>
+        <div className={styles.container}> 
+            <div>
+                <h1>The books I've read</h1>
+                <ul>
+                    {books.map(book => (
+                        <li key={book.name}>{book.name}</li>
+                    ))}
+                </ul>
+            </div>
+            <div className="form-box">
+                <form onSubmit={createBook}>
+                    <label>
+                        Author:
+                        <input 
+                            type="text" 
+                            name="author"
+                            onChange={(event) => setAuthor(event.target.value)}
+                        /> 
+                    </label>
+                    <label>
+                        Book Name:
+                        <input 
+                            type="text" 
+                            name="name"
+                            onChange={(event) => setName(event.target.value)}
+                        /> 
+                    </label>
+                    <label>
+                        Description:
+                        <input 
+                            type="text" 
+                            name="description"
+                            onChange={(event) => setDescription(event.target.value)}
+                        /> 
+                    </label>
+                    <label>
+                        Notes:
+                        <input 
+                            type="text" 
+                            name="notes"
+                            onChange={(event) => setNotes(event.target.value)}
+                        /> 
+                    </label>
+                    <label>
+                        Personal Rating:
+                        <input 
+                            type="number" 
+                            step="1" 
+                            name="rate" 
+                            min="1" 
+                            max="10"
+                            onChange={(event) => setRate(event.target.value)}
+                        /> 
+                    </label>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

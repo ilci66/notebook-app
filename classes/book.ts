@@ -4,6 +4,6 @@ export default class BookClass {
         name: string,
         description: string,
         notes: string,
-        rate: number
+        rate: string
     ) {}
 }

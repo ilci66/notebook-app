@@ -12,7 +12,9 @@ type Unsuccessful = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Books | Unsuccessful>
+  // res: NextApiResponse<Books | Unsuccessful>
+  res: NextApiResponse<Books>
+
 ) {
   await connecter();
 
@@ -29,15 +31,15 @@ export default async function handler(
           { author:"author3" ,name: 'book3', description: 'desc3', notes: 'notes3', rate: 3 }, 
         ]}) 
       } catch(error) {
-      res.status(400).json({ success: false })
+      // res.status(400).json({ success: false })
       }
       break
     case 'POST':
       // handle creation
-      res.status(200).json({success: true})
+      // res.status(200).json({success: true})
       break
     default:
-      res.status(400).json({ success: false })
+      // res.status(400).json({ success: false })
       break
   }
 }
