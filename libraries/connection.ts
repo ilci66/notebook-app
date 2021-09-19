@@ -3,8 +3,11 @@ import mongoose from 'mongoose';
 const uri: string = process.env.MONGO_URI!
 console.log(uri)
 
-// trying to chache the database connection but keep getting some kind of type issue 
-let cached = global["mongoose"]
+// gonna chache the database connection but keep getting some kind of type issue 
+// created a post about this on stackoverflow
+// let cached = global.mongoose
+
+// console.log(typeof globalThis.mongoose)
 
 const opts: object = {
     useNewUrlParser: true,
@@ -16,6 +19,7 @@ const opts: object = {
     // useCreateIndex: true
 }
 const connecter = () => {
+    // console.log("n",typeof globalThis.mongoose)
     mongoose.connect(uri, opts).then(mongoose => {
         return console.log('Database connection established')
     })
