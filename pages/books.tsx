@@ -11,7 +11,7 @@ interface AllBook {
     description: string,
     notes: string,
     rate: number
-}
+};
 interface AllBooks extends Array<AllBook>{}
 
 export const getStaticProps = async () => {
@@ -38,7 +38,7 @@ interface BookProps {
 }
 
 // const Books: NextPage<Props> = (props) => {
-const Books: NextPage<BookProps> = (props) => {
+const Books: NextPage<BookProps> =  (props) => {
     // props.books: object[]
     const { books } = props
     // console.log(books)
@@ -51,13 +51,27 @@ const Books: NextPage<BookProps> = (props) => {
     const [ notes, setNotes ] = useState("");
     const [ rate, setRate ] = useState("");
 
-    let newBook = new BookClass( author, name, description, notes, rate )
+    // fetch('/api/route-name', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(objectWithData),
+    //   })
 
-
-
-    const createBook = (event: { preventDefault: () => void; }) => {
+    const createBook = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        console.log('create a book', name, author, description, notes, rate )
+        console.log(author, name, description, notes, rate)
+        const newBook = new BookClass(author, name, description, notes, rate)
+        console.log("newBook >>>", newBook);
+
+        fetch('http://localhost:3000/api/books', {
+            method: 'POST' ,
+            headers: {
+                'Content-Type': 'application/json' ,
+            },
+            body: JSON.stringify(newBook)
+        })
     }
     
     return(

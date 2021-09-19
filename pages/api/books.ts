@@ -36,6 +36,7 @@ export default async function handler(
       break
     case 'POST':
       // handle creation
+      console.log("post req made")
       // res.status(200).json({success: true})
       break
     default:
