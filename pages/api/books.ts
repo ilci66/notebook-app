@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connecter from '../../libraries/connection';
+import mongoose from 'mongoose'
+import BookModel from '../../models/BookModel';
+
 // not necessary for now,
 // import BookModel from '../../models/BookModel';
 
@@ -12,9 +15,7 @@ type Unsuccessful = {
 
 export default async function handler(
   req: NextApiRequest,
-  // res: NextApiResponse<Books | Unsuccessful>
-  res: NextApiResponse<Books>
-
+  res: NextApiResponse<Books | Unsuccessful>
 ) {
   await connecter();
 
@@ -36,7 +37,16 @@ export default async function handler(
       break
     case 'POST':
       // handle creation
-      console.log("post req made")
+      console.log("post req made", req.body)
+      const bookToSave = await new BookModel(req.body)
+      bookToSave.save((err, data) => {
+        if(err){
+          return res.status(400).json({success: false})
+        }else {
+          return res.status(200).json({success: true})
+        }
+// gonna continue later
+      })
       // res.status(200).json({success: true})
       break
     default:
