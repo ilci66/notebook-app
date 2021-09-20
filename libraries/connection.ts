@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const uri: string = process.env.MONGO_URI!
-console.log(uri)
+// console.log(uri)
 
 // gonna chache the database connection but keep getting some kind of type issue 
 // created a post about this on stackoverflow
@@ -19,9 +19,9 @@ const opts: object = {
     // useCreateIndex: true
 }
 const connecter = () => {
-    // console.log("n",typeof globalThis.mongoose)
     mongoose.connect(uri, opts).then(mongoose => {
         return console.log('Database connection established')
     })
 }
+
 export default connecter

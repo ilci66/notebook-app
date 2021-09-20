@@ -15,7 +15,7 @@ interface AllBook {
 interface AllBooks extends Array<AllBook>{}
 
 export const getStaticProps = async () => {
-    const res = await fetch('http://localhost:3000/api/books');
+    const res = await fetch('http://localhost:3000/api/books')
     const data = await res.json();
     const books: AllBooks = data.books
     return {
@@ -51,13 +51,6 @@ const Books: NextPage<BookProps> =  (props) => {
     const [ notes, setNotes ] = useState("");
     const [ rate, setRate ] = useState("");
 
-    // fetch('/api/route-name', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(objectWithData),
-    //   })
 
     const createBook = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
