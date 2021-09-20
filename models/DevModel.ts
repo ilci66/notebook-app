@@ -1,13 +1,13 @@
 import { Schema, model } from 'mongoose';
 
-interface WebDev {
+interface Dev {
     title: string,  
     description: string, 
     notes: string, 
     source: string
 }
 
-const WebDevSchema = new Schema<WebDev>({
+const DevSchema = new Schema<Dev>({
     title: { type: String, required: true } ,
     description: { type: String, required: true } ,
     notes: { type: String, required: true } ,
@@ -16,6 +16,6 @@ const WebDevSchema = new Schema<WebDev>({
         timestamps: true
     } 
 );
-const WebDevModel = model<WebDev>('WebDevModel', WebDevSchema)
+const DevModel = model<Dev>('DevModel', DevSchema)
 
-module.exports = WebDevModel;
+module.exports = DevModel;

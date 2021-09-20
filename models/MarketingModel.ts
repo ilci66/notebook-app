@@ -22,4 +22,4 @@ const MarketingSchema = new Schema<Marketing>({
 )
 const MarketingModel = model<Marketing>('MarketingModel', MarketingSchema)
 
-module.exports = MarketingModel;
+module.exports =  MarketingModel;

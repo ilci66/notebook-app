@@ -3,8 +3,8 @@ import connecter from '../../libraries/connection';
 import mongoose from 'mongoose'
 import BookModel from '../../models/BookModel';
 import { deleteOne, getOne, getAll, createOne } from '../../utils/dbinteractions'
-// not necessary for now,
-// import BookModel from '../../models/BookModel';
+
+
 
 type Books = {
   books: object[]
@@ -17,20 +17,23 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Books | Unsuccessful>
 ) {
-  const connected:any = await connecter();
-  // make it so that after this point everything waits for the database connection
-  const { method } = req;
+  await connecter();
+  console.log('should be after')
 
+  const { method } = req;
+  console.log(method)
   switch(method) {
     case 'GET':
       try {
-        // const allbooks = await BookModel.find({})
-        // I have no data in the database yet so still using the dummy data
-        res.status(200).json({ books: [
-          { author:"author1" ,name: 'book1', description: 'desc1', notes: 'notes1', rate: 1 }, 
-          { author:"author2" ,name: 'book2', description: 'desc2', notes: 'notes2', rate: 2 }, 
-          { author:"author3" ,name: 'book3', description: 'desc3', notes: 'notes3', rate: 3 }, 
-        ]}) 
+        const books = await BookModel.find({})
+        console.log("books>>>", books)
+        res.status(200).json({  books: books })
+        // // I have no data in the database yet so still using the dummy data
+        // res.status(200).json({ books: [
+        //   { author:"author1" ,name: 'book1', description: 'desc1', notes: 'notes1', rate: 1 }, 
+        //   { author:"author2" ,name: 'book2', description: 'desc2', notes: 'notes2', rate: 2 }, 
+        //   { author:"author3" ,name: 'book3', description: 'desc3', notes: 'notes3', rate: 3 }, 
+        // ]}) 
       } catch(error) {
       res.status(400).json({ success: false })
       }

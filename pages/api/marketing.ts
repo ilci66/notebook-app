@@ -1,6 +1,9 @@
 // Note to self ==> Gonna try to define the type in a different way in 
 // every component or module to practise and learn more 
 import type { NextApiRequest, NextApiResponse } from 'next'
+import connecter from '../../libraries/connection';
+
+connecter();
 
 type MarketingNotes = {
     marketingnotes: object[]

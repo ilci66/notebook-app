@@ -7,6 +7,15 @@ const uri: string = process.env.MONGO_URI!
 // created a post about this on stackoverflow
 // let cached = global.mongoose
 
+// define mongoose connection instance in the globalObject explicity to fix it
+// import { Connection } from "mongoose";
+
+// declare module NodeJS {
+//   interface Global {
+//     mongoose: Connection
+//   }
+// }
+
 // console.log(typeof globalThis.mongoose)
 
 const opts: object = {
@@ -20,7 +29,8 @@ const opts: object = {
 }
 const connecter = () => {
     mongoose.connect(uri, opts).then(mongoose => {
-        return console.log('Database connection established')
+        console.log('Database connection established')
+        return 'connected'
     })
 }
 
