@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connecter from '../../libraries/connection';
 import mongoose from 'mongoose'
-import BookModel from '../../models/BookModel';
 import { deleteOne, getOne, getAll, createOne } from '../../utils/dbinteractions'
 
 
@@ -25,9 +24,12 @@ export default async function handler(
   switch(method) {
     case 'GET':
       try {
-        const books = await BookModel.find({})
+        const books = await getAll('book')
         console.log("books>>>", books)
-        res.status(200).json({  books: books })
+        
+        // const books = await BookModel.find({})
+        // console.log("books>>>", books)
+        // res.status(200).json({  books: books })
         // // I have no data in the database yet so still using the dummy data
         // res.status(200).json({ books: [
         //   { author:"author1" ,name: 'book1', description: 'desc1', notes: 'notes1', rate: 1 }, 

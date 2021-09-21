@@ -19,6 +19,7 @@ const BookSchema = new Schema<Book>({
         timestamps: true
     } 
 );
+// const BookModel = model<Book>('BookModel', BookSchema)
+// module.exports =  BookModel;
 const BookModel = model<Book>('BookModel', BookSchema)
-
-module.exports =  BookModel;
+export default BookModel

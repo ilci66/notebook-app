@@ -8,6 +8,7 @@ const uri: string = process.env.MONGO_URI!
 // let cached = global.mongoose
 
 // define mongoose connection instance in the globalObject explicity to fix it
+// didn't work for me and starting questioning the necessity of using ts 
 // import { Connection } from "mongoose";
 
 // declare module NodeJS {
